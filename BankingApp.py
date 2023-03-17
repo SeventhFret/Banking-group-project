@@ -3,10 +3,14 @@ from os import system
 from time import sleep
 
 system('clear')
-
+# yaro
 class BankAccount:
-    pass
-
+    def __init__(self, account_id, balance, user_name):
+        self.account_number = account_id
+        self.balance = balance
+        self.owner_name = user_name    
+    def deposit(self, amount):
+        self.balance += amount
 
 # Maksym
 class Bank(BankAccount):
