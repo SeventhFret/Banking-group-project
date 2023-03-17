@@ -12,8 +12,16 @@ class BankAccount:
         self.deposits = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
         self.withdraws = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
-    def turn_off(self):
-        pass
+    def deposit(self):
+        title = input("Name of transaction: ")
+        value = input("How much money in: ")
+        date = 0 # date format must be!
+        self.deposits.append({'title':title,'value':value,'date':date})
+    def withdraw(self):
+        title = input("Name of transaction: ")
+        value = input("How much money out: ")
+        date = 0 # date format must be!
+        self.withdraws.append({'title':title,'value':value,'date':date})
 
 
 # Maksym
