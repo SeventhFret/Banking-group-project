@@ -17,10 +17,10 @@ class Bank_account:
         self.balance -= amount
         return f"Your balance is {self.balance:.2f}."
     
-    def balance(self):
+    def check_balance(self):
         return f"Your balance is {self.balance:.2f}."
 
 my_bank = Bank_account()
 print(my_bank.deposit())
 print(my_bank.withdraw())
-print(my_bank.balance())
+print(my_bank.check_balance())
