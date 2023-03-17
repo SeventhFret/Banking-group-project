@@ -1,7 +1,7 @@
 class Bank_account:
     
-    def __init__(self, balance=float(input("Which is your initial balance? "))):
-        self.balance = balance
+    def __init__(self):
+        self.balance = 0
     
     def deposit(self):
         amount = float(input("How much money would you like to deposit? "))
