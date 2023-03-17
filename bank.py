@@ -1,12 +1,12 @@
 class Bank_account:
     
     def __init__(self):
-        self.balance = 0
+        self.balance = 0.0
     
     def deposit(self):
         amount = float(input("How much money would you like to deposit? "))
         self.balance += amount
-        return f"Your balance, included an interest of 0.02, is {self.balance:.2f}."
+        return f"Your balance is {self.balance:.2f}."
         
     def withdraw(self):
         amount = float(input("How much money would you like to withdraw? "))
@@ -18,8 +18,9 @@ class Bank_account:
         return f"Your balance is {self.balance:.2f}."
     
     def balance(self):
-        return f"Your balance is {self.balance}"
+        return f"Your balance is {self.balance:.2f}."
 
 my_bank = Bank_account()
 print(my_bank.deposit())
 print(my_bank.withdraw())
+print(my_bank.balance())
