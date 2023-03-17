@@ -1,13 +1,11 @@
 class Bank_account:
     
-    def __init__(self, balance=float(input("Which is your initial balance? ")), interest:float=0.02):
+    def __init__(self, balance=float(input("Which is your initial balance? "))):
         self.balance = balance
-        self.interest_rate = interest
     
     def deposit(self):
         amount = float(input("How much money would you like to deposit? "))
         self.balance += amount
-        self.balance = (self.balance) + self.balance * self.interest_rate
         return f"Your balance, included an interest of 0.02, is {self.balance:.2f}."
         
     def withdraw(self):
