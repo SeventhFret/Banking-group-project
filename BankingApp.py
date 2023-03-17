@@ -5,11 +5,13 @@ from time import sleep
 system('clear')
 # yaro
 class BankAccount:
-    def __init__(self, account_id, balance, user_name):
+    def __init__(self, account_id, user_name):
         self.account_number = account_id
-        self.balance = balance
-        self.owner_name = user_name    
-    def deposit(self, amount):
+        self.balance = 0.0
+        self.owner_name = user_name
+
+    def deposit(self):
+        amount = float(input("How much do you want to deposit? "))
         self.balance += amount
 
 # Maksym
@@ -18,7 +20,7 @@ class Bank(BankAccount):
     accounts = []
     def __init__(self):
         self.authorized = False
-        print("Welcome to bank!")
+        print("Welcome to bank!".center())
         if "Login" not in Bank.user_account:
             self.register()
         else:
@@ -51,7 +53,7 @@ Password should contain:
                     sleep(2)
                     system('clear')
                     continue
-        else:
+        elif c.lower() == "n":
             print("Alright, then see you.")
             exit()
 
@@ -64,6 +66,8 @@ Password should contain:
             if input("Type your password: ") == cls.user_account["Password"]:
                 self.authorized = True
                 print("Authorized successful!")
+            else:
+                print("Wrong password for", cls.user_account["Login"])
         else:
             print("Wrong login!")
     
