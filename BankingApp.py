@@ -10,9 +10,7 @@ class BankAccount:
         self.withdraws = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
     def turn_off(self):
-        self.turned_on = False
-        print("The TV is off.")
-        print()
+        pass
 
 
 # Maksym
