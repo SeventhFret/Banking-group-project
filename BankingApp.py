@@ -8,12 +8,12 @@ class BankAccount:
     pass
 
 
-
 # Maksym
 class Bank(BankAccount):
     user_account = {}
     accounts = []
     def __init__(self):
+        self.authorized = False
         print("Welcome to bank!")
         if "Login" not in Bank.user_account:
             self.register()
@@ -54,8 +54,14 @@ Password should contain:
 
 
     @classmethod
-    def authorization(cls):
-        pass
+    def authorization(cls, self):
+        system('clear')
+        if input('Type your login: ') == cls.user_account["Login"]:
+            if input("Type your password: ") == cls.user_account["Password"]:
+                self.authorized = True
+                print("Authorized successful!")
+        else:
+            print("Wrong login!")
     
 
     @classmethod
