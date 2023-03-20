@@ -3,25 +3,10 @@ from os import system
 from time import sleep
 
 system('clear')
-
+# yaro
 class BankAccount:
-    def __init__(self, iban:str, total=0, status='white'):
-        self.iban     = iban
-        self.total    = total
-        self.status   = status
-        self.deposits = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
-        self.withdraws = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
+    pass
 
-    def deposit(self):
-        title = input("Name of transaction: ")
-        value = input("How much money in: ")
-        date = 0 # date format must be!
-        self.deposits.append({'title':title,'value':value,'date':date})
-    def withdraw(self):
-        title = input("Name of transaction: ")
-        value = input("How much money out: ")
-        date = 0 # date format must be!
-        self.withdraws.append({'title':title,'value':value,'date':date})
 
 
 # Maksym
