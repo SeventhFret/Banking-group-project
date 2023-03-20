@@ -12,22 +12,21 @@ class BankAccount:
         self.iban     = iban
         self.balance  = balance
         self.status   = status
-        self.deposits = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
-        self.withdraws = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
+        self.transactions = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
     def deposit(self):
         title = input("Description of your deposit: ")
         value = int(input("How much money would you like to deposit? "))
         transaction_date = datetime.datetime.now()
         self.balance += value
-        self.deposits.append({'title':title,'value':value,'date':transaction_date})
+        self.transactions.append({'title':title,'value':value,'date':transaction_date})
     def withdraw(self):
         title = input("Description of your withdraw: ")
         value = int(input("How much money would you like to withdraw? "))
         transaction_date = datetime.datetime.now()
         if self.status != "red":
             self.balance -= value
-            self.withdraws.append({'title':title,'value':value,'date':transaction_date})
+            self.transactions.append({'title':title,'value':-value,'date':transaction_date})
         if self.balance < 0 and self.status != "red":
             print(f"You are now in red about {self.balance} euros.")
             self.status = "red"
