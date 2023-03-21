@@ -76,7 +76,7 @@ class User(BankAccount):
         self.authorized = False
 
     def register(self):
-        print("Hello, dear user! Looks like you don't have an account in our bank yet.")
+        print(cs("Hello, dear user! Looks like you don't have an account in our bank yet.", ''))
         c = input("Do you want to register?[Y/N] ")
         if c.lower() == "y":
             login = input("Create your username: ")
