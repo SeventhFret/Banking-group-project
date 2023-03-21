@@ -10,3 +10,7 @@
       4. see balance, 
       5. be able to create new accounts,
       6. be able to go into the red
+
+
+> For colorful output open Terminal and paste the command: \
+`pip3 install string-color`

@@ -1,6 +1,7 @@
 import re
 from os import system
 from time import sleep
+from stringcolor import cs
 import datetime
 import random
 
@@ -20,7 +21,7 @@ class BankAccount:
     def deposit(self):
         value = int(input("How much money would you like to deposit? "))
         title = input("Description of your deposit: ")
-        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:-3]
         self.balance += value
         if self.balance >= 0:
             self.status = "green"
@@ -34,12 +35,15 @@ class BankAccount:
     def withdraw(self):
         value = int(input("How much money would you like to withdraw? "))
         title = input("Description of your withdraw: ")
-        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:-3]
         if self.status != "red":
-            self.balance -= value
-            self.transactions.append(
-                {"title": title, "value": -value, "date": transaction_date}
-            )
+            if self.balance - value > self.red_limit:
+                self.balance -= value
+                self.transactions.append(
+                    {"title": title, "value": -value, "date": transaction_date}
+                )
+            else:
+                print(f"Sorry! The red limit is {self.red_limit} euros.")
         if self.balance < 0 and self.status != "red":
             print(f"You owe {self.balance} euros to the bank.")
             self.status = "red"
