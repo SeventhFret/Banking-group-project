@@ -2,16 +2,17 @@ import re
 from os import system
 from time import sleep
 import datetime
+import random
 
 system('clear')
 
 # Adrian
-class BankAccount(User):
-    def __init__(self, user:str, status, iban:str, balance=0):
-        super().__init__(user) # we take the 'user' and 'status' from Bank or User
-        super().__init__(status) # 'status' must be set 'red' or 'white' in Bank or User
+class BankAccount:
+    def __init__(self, iban:str):
+        self.status = 'green'
+        self.red_limit = -200
         self.iban     = iban # this will be the "name" of the bank ccount
-        self.balance  = balance
+        self.balance  = 100
         self.transactions = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
     def deposit(self):
@@ -20,6 +21,7 @@ class BankAccount(User):
         transaction_date = datetime.datetime.now()
         self.balance += value
         self.transactions.append({'title':title,'value':value,'date':transaction_date})
+
     def withdraw(self):
         title = input("Description of your withdraw: ")
         value = int(input("How much money would you like to withdraw? "))
@@ -32,6 +34,7 @@ class BankAccount(User):
             self.status = "red"
         elif self.status == "red":
             print(f"Sorry! You need to deposit more than {self.balance*-1} euros before...")
+            
     def show_balance(self):
         print(f"Your balance is now: {self.balance} euros.")
         print(f"Until now you have this transactions done:")
@@ -39,18 +42,12 @@ class BankAccount(User):
             print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
         print()
 
-# Maksym
-class Bank(BankAccount):
-    user_account = {}
+
+class User(BankAccount):
+    _user_account = {}
     accounts = []
     def __init__(self):
         self.authorized = False
-        print("Welcome to bank!".center())
-        if "Login" not in Bank.user_account:
-            self.register()
-        else:
-            self.authorization()
-
 
     @classmethod
     def register(cls):
@@ -82,24 +79,42 @@ Password should contain:
             print("Alright, then see you.")
             exit()
 
-
-
     @classmethod
     def authorization(cls, self):
         system('clear')
-        if input('Type your login: ') == cls.user_account["Login"]:
-            if input("Type your password: ") == cls.user_account["Password"]:
+        if input('Type your login: ') == cls._user_account["Login"]:
+            if input("Type your password: ") == cls._user_account["Password"]:
                 self.authorized = True
                 print("Authorized successful!")
             else:
-                print("Wrong password for", cls.user_account["Login"])
+                print("Wrong password for", cls._user_account["Login"])
         else:
             print("Wrong login!")
-    
 
-    @classmethod
-    def create_account(self):
-        super().__init__()
+    def create_bank_accout(self):
+        iban = "DE" + str(random.randint(10000000000000000000, 100000000000000000000))
+        super().__init__(iban)
+
+
+# Maksym
+class Bank(User):
+    def __init__(self):
+        self.authorized = False
+        print("Welcome to bank!".center(50, '='))
+        # if "Login" not in Bank._user_account:
+        #     super().register()
+        # else:
+        #     self.authorization()
+
+        super().create_bank_accout()
+        print(super().balance)
+
+
+
+
+
+
+
 
 
 bank = Bank()
