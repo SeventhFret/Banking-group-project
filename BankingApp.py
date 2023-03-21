@@ -12,7 +12,7 @@ class BankAccount:
         self.status = 'green'
         self.red_limit = -200
         self.iban     = iban # this will be the "name" of the bank ccount
-        self.balance  = 100
+        self.balance  = 0
         self.transactions = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
     def deposit(self):
@@ -39,8 +39,11 @@ class BankAccount:
     def show_balance(self):
         print(f"Your balance is now: {self.balance} euros.")
         print(f"Until now you have this transactions done:")
-        for transaction in self.transactions:
-            print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
+        if len(self.transactions) > 0:
+            for transaction in self.transactions:
+                print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
+        else:
+            print ("You don't have any transactions.")
         print()
 
 
@@ -48,7 +51,7 @@ class User(BankAccount):
     accounts = []
 
     def __init__(self):
-        self.user_account = {"Login": "Max", "Password": "HuGO"} 
+        self.user_account = {} 
         self.authorized = False
 
     def register(self):
@@ -91,7 +94,7 @@ Password should contain:
         else:
             print("Wrong login!")
 
-    def create_bank_accout(self):
+    def create_bank_account(self):
         iban = "DE" + str(random.randint(10000000000000000000, 100000000000000000000))
         spaced = ' '.join([iban[i:i+4] for i in range(0, len(iban), 4)])
         print(spaced)
@@ -101,13 +104,19 @@ Password should contain:
 # Maksym
 class Bank(User, BankAccount):
     def __init__(self):
+<<<<<<< HEAD
         # self.authorized = False
         print("Welcome to bank!".center(100, '='))
+=======
+>>>>>>> abbbdb41fb9a38a9aee7c7941e979a7aea9d4815
         super().__init__()
+        print("Welcome to bank!".center(50, '='))
+
         if "Login" not in self.user_account:
             self.register()
         else:
             self.authorization()
+<<<<<<< HEAD
         # print(dir(User))
         print(self.authorized)
         super().create_bank_accout()
@@ -117,9 +126,16 @@ class Bank(User, BankAccount):
 
 
 
+=======
+>>>>>>> abbbdb41fb9a38a9aee7c7941e979a7aea9d4815
 
+        choice = True
 
+        while choice != 'x':
+            system('clear')
+            print("What do you want")
 
+        
 
 
 bank = Bank()
