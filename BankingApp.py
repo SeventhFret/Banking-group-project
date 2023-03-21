@@ -113,12 +113,4 @@ class Bank(User):
         super().create_bank_account()
         # print(super().balance)
 
-
-
-
-
-
-
-
-
 bank = Bank()
