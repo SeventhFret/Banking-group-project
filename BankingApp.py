@@ -43,7 +43,7 @@ class BankAccount:
             for transaction in self.transactions:
                 print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
         else:
-            print ("You don't have any transactions.")
+            print("You don't have any transactions.")
         print()
 
 
@@ -102,7 +102,7 @@ Password should contain:
 
 
 # Maksym
-class Bank(User, BankAccount):
+class Bank(User):
     def __init__(self):
         super().__init__()
         print("Welcome to bank!".center(50, '='))
