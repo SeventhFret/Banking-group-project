@@ -21,10 +21,8 @@ class BankAccount:
     def deposit(self):
         value = int(input(cs("How much money would you like to deposit? ", "SkyBlue2")))
         title = input(cs("Description of your deposit: ", "SkyBlue2"))
-        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:-3]
+        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.balance += value
-        if self.balance >= 0:
-            self.status = "green"
         self.transactions.append(
             {"title": title, "value": value, "date": transaction_date}
         )
@@ -35,7 +33,7 @@ class BankAccount:
     def withdraw(self):
         value = int(input(cs("How much money would you like to withdraw? ", "SkyBlue2")))
         title = input(cs("Description of your withdraw: ", "SkyBlue2"))
-        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:-3]
+        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         if self.status != "red":
             if self.balance - value > self.red_limit:
                 self.balance -= value
@@ -54,9 +52,6 @@ class BankAccount:
 
     def show_balance(self):
         print(cs(f"Your balance is now: {self.balance} euros.", "RoyalBlue"))
-        
-    
-    def statement(self):
         if len(self.transactions) > 0:
             print(f"Until now you have this transactions done:")
             for transaction in self.transactions:
@@ -87,18 +82,17 @@ Password should contain:
     -> At least one digit [0-9]
     -> At least one lowercase character [a-z]
     -> At least one uppercase character [A-Z]
-    -> At least one special character [#?!@$%^&*-/.]
+    -> At least one special character [#?!@$%^&*-]
     -> At least 8 characters in length, but no more than 32.
     """
                 )
                 pattern = (
-                    "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-/.]).{8,}$"
+                    "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
                 )
                 if re.match(pattern, password) is not None:
                     print(cs("Account successfully created!", "green").bold())
                     self.user_account["Login"] = login
                     self.user_account["Password"] = password
-                    sleep(2)
                     return True
                 else:
                     print(cs("Password is wrong!", "red").bold())
@@ -149,7 +143,6 @@ class Bank(User):
             [1] - balance
             [2] - withdraw 
             [3] - deposit
-            [4] - statement
             [x] - exit 
             """
             , "RoyalBlue"))
@@ -162,9 +155,6 @@ class Bank(User):
 
             elif choice == "3":
                 self.deposit()
-            
-            elif choice == "4":
-                self.statement()
 
             if choice == "x":
                 print(
