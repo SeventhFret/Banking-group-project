@@ -1,20 +1,51 @@
 import re
 from os import system
 from time import sleep
+import datetime
 
 system('clear')
-# yaro
-class BankAccount:
-    pass
 
+# Adrian
+class BankAccount(User):
+    def __init__(self, user:str, status, iban:str, balance=0):
+        super().__init__(user) # we take the 'user' and 'status' from Bank or User
+        super().__init__(status) # 'status' must be set 'red' or 'white' in Bank or User
+        self.iban     = iban # this will be the "name" of the bank ccount
+        self.balance  = balance
+        self.transactions = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
+    def deposit(self):
+        title = input("Description of your deposit: ")
+        value = int(input("How much money would you like to deposit? "))
+        transaction_date = datetime.datetime.now()
+        self.balance += value
+        self.transactions.append({'title':title,'value':value,'date':transaction_date})
+    def withdraw(self):
+        title = input("Description of your withdraw: ")
+        value = int(input("How much money would you like to withdraw? "))
+        transaction_date = datetime.datetime.now()
+        if self.status != "red":
+            self.balance -= value
+            self.transactions.append({'title':title,'value':-value,'date':transaction_date})
+        if self.balance < 0 and self.status != "red":
+            print(f"You owe {self.balance} euros to the bank.")
+            self.status = "red"
+        elif self.status == "red":
+            print(f"Sorry! You need to deposit more than {self.balance*-1} euros before...")
+    def show_balance(self):
+        print(f"Your balance is now: {self.balance} euros.")
+        print(f"Until now you have this transactions done:")
+        for transaction in self.transactions:
+            print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
+        print()
 
 # Maksym
 class Bank(BankAccount):
     user_account = {}
     accounts = []
     def __init__(self):
-        print("Welcome to bank!")
+        self.authorized = False
+        print("Welcome to bank!".center())
         if "Login" not in Bank.user_account:
             self.register()
         else:
@@ -47,15 +78,23 @@ Password should contain:
                     sleep(2)
                     system('clear')
                     continue
-        else:
+        elif c.lower() == "n":
             print("Alright, then see you.")
             exit()
 
 
 
     @classmethod
-    def authorization(cls):
-        pass
+    def authorization(cls, self):
+        system('clear')
+        if input('Type your login: ') == cls.user_account["Login"]:
+            if input("Type your password: ") == cls.user_account["Password"]:
+                self.authorized = True
+                print("Authorized successful!")
+            else:
+                print("Wrong password for", cls.user_account["Login"])
+        else:
+            print("Wrong login!")
     
 
     @classmethod
