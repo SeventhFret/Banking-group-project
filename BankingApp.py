@@ -90,7 +90,7 @@ Password should contain:
         else:
             print("Wrong login!")
 
-    def create_bank_accout(self):
+    def create_bank_account(self):
         iban = "DE" + str(random.randint(10000000000000000000, 100000000000000000000))
         spaced = ' '.join([iban[i:i+4] for i in range(0, len(iban), 4)])
         print(spaced)
@@ -109,9 +109,8 @@ class Bank(User):
             self.authorization()
         print(self.authorized)
 
-        super().create_bank_accout()
-        super().withdraw()
-        super().show_balance()
+        super().create_bank_account()
+        # print(super().balance)
 
 
 
