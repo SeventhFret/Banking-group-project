@@ -22,6 +22,8 @@ class BankAccount:
         title = input("Description of your deposit: ")
         transaction_date = datetime.datetime.now()
         self.balance += value
+        if self.balance >= 0:
+            self.status = "green"
         self.transactions.append(
             {"title": title, "value": value, "date": transaction_date}
         )
