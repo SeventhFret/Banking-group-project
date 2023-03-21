@@ -24,8 +24,8 @@ class BankAccount:
         print(f"Deposit {value} euros was charged. Your balance now is: {self.balance} euros.")
 
     def withdraw(self):
-        title = input("Description of your withdraw: ")
         value = int(input("How much money would you like to withdraw? "))
+        title = input("Description of your withdraw: ")
         transaction_date = datetime.datetime.now()
         if self.status != "red":
             self.balance -= value
