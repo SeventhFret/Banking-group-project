@@ -50,6 +50,9 @@ class BankAccount:
 
     def show_balance(self):
         print(f"Your balance is now: {self.balance} euros.")
+        
+    
+    def statement(self):
         if len(self.transactions) > 0:
             print(f"Until now you have this transactions done:")
             for transaction in self.transactions:
@@ -141,6 +144,7 @@ class Bank(User):
             [1] - balance
             [2] - withdraw 
             [3] - deposit
+            [4] - statement
             [x] - exit 
             """
             )
@@ -153,6 +157,9 @@ class Bank(User):
 
             elif choice == "3":
                 self.deposit()
+            
+            elif choice == "4":
+                self.statement()
 
             if choice == "x":
                 print(
