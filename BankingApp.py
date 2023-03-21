@@ -16,12 +16,12 @@ class BankAccount:
         self.transactions = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
     def deposit(self):
-        title = input("Description of your deposit: ")
         value = int(input("How much money would you like to deposit? "))
+        title = input("Description of your deposit: ")
         transaction_date = datetime.datetime.now()
         self.balance += value
         self.transactions.append({'title':title,'value':value,'date':transaction_date})
-        print(f"Deposit {value} euros was charged. Your balance now is: {self.balance} euros. Gratz")
+        print(f"Deposit {value} euros was charged. Your balance now is: {self.balance} euros.")
 
     def withdraw(self):
         title = input("Description of your withdraw: ")
@@ -38,8 +38,8 @@ class BankAccount:
             
     def show_balance(self):
         print(f"Your balance is now: {self.balance} euros.")
-        print(f"Until now you have this transactions done:")
         if len(self.transactions) > 0:
+            print(f"Until now you have this transactions done:")
             for transaction in self.transactions:
                 print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
         else:
