@@ -41,6 +41,8 @@ class BankAccount:
         if len(self.transactions) > 0:
             for transaction in self.transactions:
                 print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
+        else:
+            print ("You don't have any transactions.")
         print()
 
 
