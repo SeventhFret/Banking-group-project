@@ -19,8 +19,8 @@ class BankAccount:
         )  # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
     def deposit(self):
-        value = int(input("How much money would you like to deposit? "))
-        title = input("Description of your deposit: ")
+        value = int(input(cs("How much money would you like to deposit? ", "SkyBlue2")))
+        title = input(cs("Description of your deposit: ", "SkyBlue2"))
         transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:-3]
         self.balance += value
         if self.balance >= 0:
@@ -29,12 +29,12 @@ class BankAccount:
             {"title": title, "value": value, "date": transaction_date}
         )
         print(
-            f"Deposit {value} euros was charged. Your balance now is: {self.balance} euros."
+            cs(f"Deposit {value} euros was charged. Your balance now is: {self.balance} euros.", "green").bold()
         )
 
     def withdraw(self):
-        value = int(input("How much money would you like to withdraw? "))
-        title = input("Description of your withdraw: ")
+        value = int(input(cs("How much money would you like to withdraw? ", "SkyBlue2")))
+        title = input(cs("Description of your withdraw: ", "SkyBlue2"))
         transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:-3]
         if self.status != "red":
             if self.balance - value > self.red_limit:
@@ -43,17 +43,17 @@ class BankAccount:
                     {"title": title, "value": -value, "date": transaction_date}
                 )
             else:
-                print(f"Sorry! The red limit is {self.red_limit} euros.")
+                print(cs(f"Sorry! The red limit is {self.red_limit} euros.", "red").bold())
         if self.balance < 0 and self.status != "red":
-            print(f"You owe {self.balance} euros to the bank.")
+            print(cs(f"You owe {self.balance} euros to the bank.", "Orange").bold())
             self.status = "red"
         elif self.status == "red":
             print(
-                f"Sorry! You need to deposit more than {self.balance*-1} euros before..."
+                cs(f"Sorry! You need to deposit more than {self.balance*-1} euros before...", "red").bold()
             )
 
     def show_balance(self):
-        print(f"Your balance is now: {self.balance} euros.")
+        print(cs(f"Your balance is now: {self.balance} euros.", "RoyalBlue"))
         
     
     def statement(self):
@@ -76,7 +76,7 @@ class User(BankAccount):
         self.authorized = False
 
     def register(self):
-        print(cs("Hello, dear user! Looks like you don't have an account in our bank yet.", ''))
+        print(cs("Hello, dear user! Looks like you don't have an account in our bank yet.", 'DeepSkyBlue3'))
         c = input("Do you want to register?[Y/N] ")
         if c.lower() == "y":
             login = input("Create your username: ")
@@ -95,18 +95,18 @@ Password should contain:
                     "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-/.]).{8,}$"
                 )
                 if re.match(pattern, password) is not None:
-                    print("Account successfully created!")
+                    print(cs("Account successfully created!", "green").bold())
                     self.user_account["Login"] = login
                     self.user_account["Password"] = password
                     sleep(2)
                     return True
                 else:
-                    print("Password is wrong!")
+                    print(cs("Password is wrong!", "red").bold())
                     sleep(2)
                     system("clear")
                     continue
         elif c.lower() == "n":
-            print("Alright, then see you.")
+            print(cs("Alright, then see you.", "RoyalBlue"))
             exit()
 
     def authorization(self):
@@ -131,7 +131,7 @@ Password should contain:
 class Bank(User):
     def __init__(self):
         super().__init__()
-        print("Welcome to bank!".center(50, "="))
+        print(cs("Welcome to bank!".center(50, "="), 'RoyalBlue'))
 
         if "Login" not in self.user_account:
             self.register()
@@ -145,14 +145,14 @@ class Bank(User):
         while choice != "x":
             system("clear")
             choice = input(
-                """Please, select an option:
+                cs("""Please, select an option:
             [1] - balance
             [2] - withdraw 
             [3] - deposit
             [4] - statement
             [x] - exit 
             """
-            )
+            , "RoyalBlue"))
 
             if choice == "1":
                 self.show_balance()
@@ -168,7 +168,7 @@ class Bank(User):
 
             if choice == "x":
                 print(
-                    "We thank you for having used our banking services.\nWe wish a nice day!"
+                    cs("We thank you for having used our banking services.\nWe wish a nice day!", "RoyalBlue")
                 )
                 quit()
 
