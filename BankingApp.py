@@ -21,6 +21,7 @@ class BankAccount:
         transaction_date = datetime.datetime.now()
         self.balance += value
         self.transactions.append({'title':title,'value':value,'date':transaction_date})
+        print(f"Deposit {value} euros was charged. Your balance now is: {self.balance} euros. Gratz")
 
     def withdraw(self):
         title = input("Description of your withdraw: ")
@@ -98,10 +99,10 @@ Password should contain:
 
 
 # Maksym
-class Bank(User):
+class Bank(User, BankAccount):
     def __init__(self):
         # self.authorized = False
-        print("Welcome to bank!".center(50, '='))
+        print("Welcome to bank!".center(100, '='))
         super().__init__()
         if "Login" not in self.user_account:
             self.register()
@@ -109,8 +110,8 @@ class Bank(User):
             self.authorization()
         # print(dir(User))
         print(self.authorized)
-
         super().create_bank_accout()
+        super().withdraw()
         # print(super().balance)
 
 
