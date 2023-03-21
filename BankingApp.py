@@ -43,7 +43,7 @@ class BankAccount:
             for transaction in self.transactions:
                 print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
         else:
-            print ("You don't have any transactions.")
+            print("You don't have any transactions.")
         print()
 
 
@@ -111,14 +111,32 @@ class Bank(User, BankAccount):
             self.register()
         else:
             self.authorization()
+        
+        self.create_bank_account()
 
         choice = True
 
         while choice != 'x':
             system('clear')
-            print("What do you want")
+            choice = ("""Please, select an option:
+            [1] - balance
+            [2] - withdraw 
+            [3] - deposit
+            [x] - exit 
+            """)
 
-        
+            if choice == "1":
+                pass
+            
+            if choice == "2":
+                pass
+            
+            if choice == "3":
+                pass
+                
+            if choice == "x":
+                pass
+            
 
 
 bank = Bank()
