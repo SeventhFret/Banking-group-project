@@ -21,7 +21,7 @@ class BankAccount:
     def deposit(self):
         value = int(input("How much money would you like to deposit? "))
         title = input("Description of your deposit: ")
-        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:-3]
         self.balance += value
         if self.balance >= 0:
             self.status = "green"
@@ -35,7 +35,7 @@ class BankAccount:
     def withdraw(self):
         value = int(input("How much money would you like to withdraw? "))
         title = input("Description of your withdraw: ")
-        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+        transaction_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:-3]
         if self.status != "red":
             if self.balance - value > self.red_limit:
                 self.balance -= value
