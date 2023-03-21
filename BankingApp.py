@@ -135,7 +135,7 @@ class Bank(User):
                 self.deposit()
                 
             if choice == "x":
-                print("Thank you for having used our bank and have a nice day!")
+                print("We thank you for having used our banking services.\nWe wish a nice day!")
                 quit()
             
             elif choice != "x":
