@@ -33,7 +33,7 @@ class BankAccount(User):
         elif self.status == "red":
             print(f"Sorry! You need to deposit more than {self.balance} before...")
     def balance(self):
-        print(f"Your balance is now: {self.balance} euros.")
+        print(f"Your balance is now: {self.balance*-1} euros.")
         print(f"Until now you have this transactions done:")
         for transaction in self.transactions:
             print(f"{transaction[date]} | {transaction[value]} | {transaction[title]}")
