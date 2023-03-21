@@ -80,7 +80,7 @@ Password should contain:
     -> At least one digit [0-9]
     -> At least one lowercase character [a-z]
     -> At least one uppercase character [A-Z]
-    -> At least one special character [#?!@$%^&*-]
+    -> At least one special character [#?!@$%^&*-/.]
     -> At least 8 characters in length, but no more than 32.
     """
                 )
