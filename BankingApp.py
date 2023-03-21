@@ -85,12 +85,13 @@ Password should contain:
     """
                 )
                 pattern = (
-                    "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+                    "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-/.]).{8,}$"
                 )
                 if re.match(pattern, password) is not None:
                     print("Account successfully created!")
                     self.user_account["Login"] = login
                     self.user_account["Password"] = password
+                    sleep(2)
                     return True
                 else:
                     print("Password is wrong!")
