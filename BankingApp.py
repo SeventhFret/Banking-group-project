@@ -108,14 +108,32 @@ class Bank(User):
             self.register()
         else:
             self.authorization()
+        
+        self.create_bank_account()
 
         choice = True
 
         while choice != 'x':
             system('clear')
-            print("What do you want")
+            choice = ("""Please, select an option:
+            [1] - balance
+            [2] - withdraw 
+            [3] - deposit
+            [x] - exit 
+            """)
 
-        
+            if choice == "1":
+                pass
+            
+            if choice == "2":
+                pass
+            
+            if choice == "3":
+                pass
+                
+            if choice == "x":
+                pass
+            
 
 
 bank = Bank()
