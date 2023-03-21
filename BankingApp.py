@@ -21,6 +21,7 @@ class BankAccount:
         transaction_date = datetime.datetime.now()
         self.balance += value
         self.transactions.append({'title':title,'value':value,'date':transaction_date})
+        print(f"Deposit {value} euros was charged. Your balance now is: {self.balance} euros. Gratz")
 
     def withdraw(self):
         title = input("Description of your withdraw: ")
@@ -41,6 +42,8 @@ class BankAccount:
         if len(self.transactions) > 0:
             for transaction in self.transactions:
                 print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
+        else:
+            print ("You don't have any transactions.")
         print()
 
 
@@ -99,7 +102,7 @@ Password should contain:
 
 
 # Maksym
-class Bank(User):
+class Bank(User, BankAccount):
     def __init__(self):
         super().__init__()
         print("Welcome to bank!".center(50, '='))
