@@ -44,13 +44,13 @@ class BankAccount:
 
 
 class User(BankAccount):
-    _user_account = {}
     accounts = []
+
     def __init__(self):
+        self.user_account = {"Login": "Max", "Password": "HuGO"} 
         self.authorized = False
 
-    @classmethod
-    def register(cls):
+    def register(self):
         print("Hello, dear user! Looks like you don't have an account in our bank yet.")
         c = input("Do you want to register?[Y/N] ")
         if c.lower() == "y":
@@ -67,8 +67,8 @@ Password should contain:
                 pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
                 if re.match(pattern, password) is not None:
                     print("Account successfully created!")
-                    cls.user_account["Login"] = login
-                    cls.user_account["Password"] = password
+                    self.user_account["Login"] = login
+                    self.user_account["Password"] = password
                     return True
                 else:
                     print("Password is wrong!")
@@ -79,35 +79,39 @@ Password should contain:
             print("Alright, then see you.")
             exit()
 
-    @classmethod
-    def authorization(cls, self):
+    def authorization(self):
         system('clear')
-        if input('Type your login: ') == cls._user_account["Login"]:
-            if input("Type your password: ") == cls._user_account["Password"]:
+        if input('Type your login: ') == self.user_account["Login"]:
+            if input("Type your password: ") == self.user_account["Password"]:
                 self.authorized = True
                 print("Authorized successful!")
             else:
-                print("Wrong password for", cls._user_account["Login"])
+                print("Wrong password for", self.user_account["Login"])
         else:
             print("Wrong login!")
 
     def create_bank_accout(self):
         iban = "DE" + str(random.randint(10000000000000000000, 100000000000000000000))
-        super().__init__(iban)
+        spaced = ' '.join([iban[i:i+4] for i in range(0, len(iban), 4)])
+        print(spaced)
+        super().__init__(spaced)
 
 
 # Maksym
 class Bank(User):
     def __init__(self):
-        self.authorized = False
+        # self.authorized = False
         print("Welcome to bank!".center(50, '='))
-        # if "Login" not in Bank._user_account:
-        #     super().register()
-        # else:
-        #     self.authorization()
+        super().__init__()
+        if "Login" not in self.user_account:
+            self.register()
+        else:
+            self.authorization()
+        # print(dir(User))
+        print(self.authorized)
 
         super().create_bank_accout()
-        print(super().balance)
+        # print(super().balance)
 
 
 
