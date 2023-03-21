@@ -29,7 +29,7 @@ class BankAccount:
             {"title": title, "value": value, "date": transaction_date}
         )
         print(
-            f"Deposit {value} euros was charged. Your balance now is: {self.balance} euros."
+            f"Your deposit of {value} euros was completed. Your balance now is: {self.balance} euros."
         )
 
     def withdraw(self):
