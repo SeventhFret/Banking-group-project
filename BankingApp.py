@@ -104,11 +104,6 @@ Password should contain:
 # Maksym
 class Bank(User, BankAccount):
     def __init__(self):
-<<<<<<< HEAD
-        # self.authorized = False
-        print("Welcome to bank!".center(100, '='))
-=======
->>>>>>> abbbdb41fb9a38a9aee7c7941e979a7aea9d4815
         super().__init__()
         print("Welcome to bank!".center(50, '='))
 
@@ -116,18 +111,6 @@ class Bank(User, BankAccount):
             self.register()
         else:
             self.authorization()
-<<<<<<< HEAD
-        # print(dir(User))
-        print(self.authorized)
-        super().create_bank_accout()
-        super().withdraw()
-        # print(super().balance)
-
-
-
-
-=======
->>>>>>> abbbdb41fb9a38a9aee7c7941e979a7aea9d4815
 
         choice = True
 
