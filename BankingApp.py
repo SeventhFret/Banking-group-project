@@ -7,11 +7,11 @@ system('clear')
 
 # Adrian
 class BankAccount:
-    def __init__(self, user:str, iban:str, balance=0, status='white'):
-        self.user     = user
-        self.iban     = iban
+    def __init__(self, user:str, status, iban:str, balance=0):
+        super().__init__(user) # we take the 'user' and 'status' from Bank or User
+        super().__init__(status) # 'status' must be set 'red' or 'white' in Bank or User
+        self.iban     = iban # this will be the "name" of the bank ccount
         self.balance  = balance
-        self.status   = status
         self.transactions = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
     def deposit(self):
@@ -27,11 +27,17 @@ class BankAccount:
         if self.status != "red":
             self.balance -= value
             self.transactions.append({'title':title,'value':-value,'date':transaction_date})
-        if self.balance < 0 and self.status != "red":
-            print(f"You are now in red about {self.balance} euros.")
+        if self.balance < 0:
+            print(f"You owe {self.balance} euros to the bank.")
             self.status = "red"
         elif self.status == "red":
-            print("Sorry! You need to deposit some money before...")
+            print(f"Sorry! You need to deposit more than {self.balance} before...")
+    def balance(self):
+        print(f"Your balance is now: {self.balance} euros.")
+        print(f"Until now you have this transactions done:")
+        for transaction in self.transactions:
+            print(f"{transaction[date]} | {transaction[value]} | {transaction[title]}")
+        print()
 
 # Maksym
 class Bank(BankAccount):
