@@ -1,6 +1,7 @@
 import re
 from os import system
 from time import sleep
+from stringcolor import cs
 import datetime
 import random
 
