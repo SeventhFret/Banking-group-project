@@ -102,7 +102,7 @@ Password should contain:
 
 
 # Maksym
-class Bank(User, BankAccount):
+class Bank(User):
     def __init__(self):
         super().__init__()
         print("Welcome to bank!".center(50, '='))
