@@ -36,7 +36,7 @@ class BankAccount(User):
         print(f"Your balance is now: {self.balance} euros.")
         print(f"Until now you have this transactions done:")
         for transaction in self.transactions:
-            print(f"{transaction[date]} | {transaction[value]} | {transaction[title]}")
+            print(f"{transaction['date']} | {transaction['value']} | {transaction['title']}")
         print()
 
 # Maksym
