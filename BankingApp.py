@@ -120,8 +120,9 @@ Password should contain:
     def create_bank_account(self):
         iban = "DE" + str(random.randint(10000000000000000000, 100000000000000000000))
         spaced = " ".join([iban[i : i + 4] for i in range(0, len(iban), 4)])
-        print(spaced)
+        print(f"Your IBAN is {spaced}.")
         super().__init__(spaced)
+        input("Press Enter to continue.")
 
 
 # Maksym
