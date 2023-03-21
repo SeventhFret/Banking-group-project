@@ -83,17 +83,18 @@ Password should contain:
     -> At least one digit [0-9]
     -> At least one lowercase character [a-z]
     -> At least one uppercase character [A-Z]
-    -> At least one special character [#?!@$%^&*-]
+    -> At least one special character [#?!@$%^&*-/.]
     -> At least 8 characters in length, but no more than 32.
     """
                 )
                 pattern = (
-                    "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+                    "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-/.]).{8,}$"
                 )
                 if re.match(pattern, password) is not None:
                     print("Account successfully created!")
                     self.user_account["Login"] = login
                     self.user_account["Password"] = password
+                    sleep(2)
                     return True
                 else:
                     print("Password is wrong!")
