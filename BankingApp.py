@@ -118,7 +118,7 @@ class Bank(User, BankAccount):
 
         while choice != 'x':
             system('clear')
-            choice = ("""Please, select an option:
+            choice = input("""Please, select an option:
             [1] - balance
             [2] - withdraw 
             [3] - deposit
@@ -126,17 +126,20 @@ class Bank(User, BankAccount):
             """)
 
             if choice == "1":
-                pass
+                self.show_balance()
+                
+            elif choice == "2":
+                self.withdraw()
             
-            if choice == "2":
-                pass
-            
-            if choice == "3":
-                pass
+            elif choice == "3":
+                self.deposit()
                 
             if choice == "x":
-                pass
+                print("Thank you for having used our bank and have a nice day!")
+                quit()
             
-
+            elif choice != "x":
+                input("Press Enter to continue.")
+                continue
 
 bank = Bank()
