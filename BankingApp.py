@@ -27,7 +27,7 @@ class BankAccount(User):
         if self.status != "red":
             self.balance -= value
             self.transactions.append({'title':title,'value':-value,'date':transaction_date})
-        if self.balance < 0:
+        if self.balance < 0 and self.status != "red":
             print(f"You owe {self.balance} euros to the bank.")
             self.status = "red"
         elif self.status == "red":
