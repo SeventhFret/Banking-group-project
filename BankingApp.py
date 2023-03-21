@@ -101,14 +101,13 @@ Password should contain:
 # Maksym
 class Bank(User):
     def __init__(self):
-        # self.authorized = False
-        print("Welcome to bank!".center(50, '='))
         super().__init__()
+        print("Welcome to bank!".center(50, '='))
+
         if "Login" not in self.user_account:
             self.register()
         else:
             self.authorization()
-        # print(dir(User))
         print(self.authorized)
 
         super().create_bank_account()
