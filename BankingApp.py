@@ -12,7 +12,7 @@ class BankAccount:
         self.status = 'green'
         self.red_limit = -200
         self.iban     = iban # this will be the "name" of the bank ccount
-        self.balance  = 100
+        self.balance  = 0
         self.transactions = [] # list of dictionaries like {'title':'Blabla','value':1234,'date':'17.03.2023'}
 
     def deposit(self):
@@ -47,7 +47,7 @@ class User(BankAccount):
     accounts = []
 
     def __init__(self):
-        self.user_account = {"Login": "Max", "Password": "HuGO"} 
+        self.user_account = {} 
         self.authorized = False
 
     def register(self):
@@ -107,17 +107,14 @@ class Bank(User):
             self.register()
         else:
             self.authorization()
-        print(self.authorized)
 
-        super().create_bank_account()
-        # print(super().balance)
+        choice = True
 
+        while choice != 'x':
+            system('clear')
+            print("What do you want")
 
-
-
-
-
-
+        
 
 
 bank = Bank()
