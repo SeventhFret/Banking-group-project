@@ -6,7 +6,7 @@ import datetime
 system('clear')
 
 # Adrian
-class BankAccount:
+class BankAccount(User):
     def __init__(self, user:str, status, iban:str, balance=0):
         super().__init__(user) # we take the 'user' and 'status' from Bank or User
         super().__init__(status) # 'status' must be set 'red' or 'white' in Bank or User
